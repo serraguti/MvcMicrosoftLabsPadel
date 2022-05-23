@@ -41,14 +41,18 @@ namespace MvcMicrosoftLabsPadel.Repositories
         //METODO PARA CREAR NUEVOS USUARIOS
         //Y DEVOLVERA EL ID DEL NUEVO USUARIO INSERTADO
         //PARA FUTURAS ACCIONES
-        public async Task<int> AddUserAsync(string nombre, string apellidos
-            , string email, DateTime fechaNacimiento)
+        public async Task<int> AddUserAsync(string nombre
+            , string apellidos
+            , string email
+            , string imagen,
+            DateTime fechaNacimiento)
         {
             Usuario user = new Usuario();
             user.IdUsuario = this.GetMaxIdUsuario();
             user.Nombre = nombre;
             user.Apellidos = apellidos;
             user.Email = email;
+            user.Imagen = user.IdUsuario + "_" + imagen;
             user.FechaNacimiento = fechaNacimiento;
             user.Activo = false;
             await this.context.Usuarios.AddAsync(user);
