@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<RepositoryUsuarios>();
 //AÑADIMOS EL SERVICIO AZURE STORAGE
 builder.Services.AddTransient<ServiceAzureStorage>();
+//AÑADIMOS EL SERVICIO AZURE LOGIC APPS
+builder.Services.AddTransient<ServiceLogicApps>();
 //RECUPERAMOS LA CADENA DE CONEXION
 string connectionString =
     builder.Configuration.GetConnectionString("AzureSqlServer");

@@ -69,5 +69,13 @@ namespace MvcMicrosoftLabsPadel.Controllers
                 , body);
             return RedirectToAction("Index");
         }
+
+        public IActionResult ActiveAccount(int id)
+        {
+            //MEDIANTE EL REPOSITORIO O LO QUE DESEARAMOS
+            //CAMBIAMOS EL ESTADO DEL USER DE ACTIVO --> false
+            //A true
+            return View();
+        }
     }
 }
