@@ -52,6 +52,7 @@ namespace MvcMicrosoftLabsPadel.Repositories
             user.Nombre = nombre;
             user.Apellidos = apellidos;
             user.Email = email;
+            //1_imagen1.png
             user.Imagen = user.IdUsuario + "_" + imagen;
             user.FechaNacimiento = fechaNacimiento;
             user.Activo = false;

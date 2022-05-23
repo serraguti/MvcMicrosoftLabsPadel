@@ -1,11 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using MvcMicrosoftLabsPadel.Data;
 using MvcMicrosoftLabsPadel.Repositories;
+using MvcMicrosoftLabsPadel.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //AÑADIMOS EL REPOSITORIO
 builder.Services.AddTransient<RepositoryUsuarios>();
+//AÑADIMOS EL SERVICIO AZURE STORAGE
+builder.Services.AddTransient<ServiceAzureStorage>();
 //RECUPERAMOS LA CADENA DE CONEXION
 string connectionString =
     builder.Configuration.GetConnectionString("AzureSqlServer");
