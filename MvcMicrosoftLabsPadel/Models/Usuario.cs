@@ -13,6 +13,8 @@ namespace MvcMicrosoftLabsPadel.Models
         public string? Nombre { get; set; }
         [Column("APELLIDOS")]
         public string Apellidos { get; set; }
+        [Column("IMAGEN")]
+        public string Imagen { get; set; }
         [Column("FECHA_NACIMIENTO")]
         public DateTime FechaNacimiento { get; set; }
         [Column("EMAIL")]
