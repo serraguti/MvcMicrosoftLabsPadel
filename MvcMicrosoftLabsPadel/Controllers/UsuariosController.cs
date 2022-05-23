@@ -9,13 +9,16 @@ namespace MvcMicrosoftLabsPadel.Controllers
     {
         private RepositoryUsuarios repo;
         private ServiceAzureStorage serviceAzureStorage;
+        private ServiceLogicApps serviceLogicApps;
 
         public UsuariosController
             (RepositoryUsuarios repo,
-            ServiceAzureStorage serviceAzureStorage)
+            ServiceAzureStorage serviceAzureStorage,
+            ServiceLogicApps serviceLogicApps)
         {
             this.repo = repo;
             this.serviceAzureStorage = serviceAzureStorage;
+            this.serviceLogicApps = serviceLogicApps;
         }
 
         public IActionResult Index()
@@ -54,6 +57,16 @@ namespace MvcMicrosoftLabsPadel.Controllers
                 await this.serviceAzureStorage.UploadBlobAsync
                     (idNewUser + "_" + fileName, stream);
             }
+            //ADEMAS DEL MAIL, ENVIAMOS UN ENLACE PARA QUE PUEDA PULSAR Y ACTIVAR SU CUENTA
+            //RECUPERAMOS NUESTRO HOST PARA QUE PULSE EL USUARIO EN NUESTRA WEB
+            string host = "https://"
+                + Request.Host + "/usuarios/ActiveAccount/" + idNewUser;
+            string body = "Bienvenido a nuestra página de Microsoft LABS";
+            body += "Debe pulsar en el siguiente enlace para activar su cuenta: <br/>";
+            body += "<a href='" + host + "'>" + host + "</a><br/>";
+            body += "<h1>Welcome to the Jungle!!!</h1>";
+            await this.serviceLogicApps.SendMailNewUserAsync(usuario.Email, "Alta realizada correctamente"
+                , body);
             return RedirectToAction("Index");
         }
     }

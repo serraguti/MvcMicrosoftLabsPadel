@@ -6,22 +6,35 @@ namespace MvcMicrosoftLabsPadel.Repositories
     public class RepositoryUsuarios
     {
         private UsuariosContext context;
+        private string UrlAzureBlobs;
 
-        public RepositoryUsuarios(UsuariosContext context)
+        public RepositoryUsuarios
+            (UsuariosContext context,
+            IConfiguration configuration)
         {
             this.context = context;
+            this.UrlAzureBlobs =
+                configuration.GetValue<string>("AzureStorage:BlobsUrl");
         }
 
         //METODO PARA RECUPERAR TODOS LOS USUARIOS
         public List<Usuario> GetUsuarios()
         {
-            return this.context.Usuarios.ToList();
+            var consulta = from datos in this.context.Usuarios
+                           select datos;
+            foreach (Usuario user in consulta)
+            {
+                user.Imagen = this.UrlAzureBlobs + user.Imagen;
+            }
+            return consulta.ToList();
         }
 
         //METODO PARA BUSCAR UN USUARIO PARA LOS DETALLES
         public Usuario FindUsuario(int idUser)
         {
-            return this.context.Usuarios.FirstOrDefault(x => x.IdUsuario == idUser);
+            Usuario user = this.context.Usuarios.FirstOrDefault(x => x.IdUsuario == idUser);
+            user.Imagen = this.UrlAzureBlobs + user.Imagen;
+            return user;
         }
 
         //METODO PRIVADO PARA RECUPERAR EL MAXIMO ID
