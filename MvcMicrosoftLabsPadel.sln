@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcMicrosoftLabsPadel", "MvcMicrosoftLabsPadel\MvcMicrosoftLabsPadel.csproj", "{497453AD-D7BF-455F-8CDA-1DA0C0579ADE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{497453AD-D7BF-455F-8CDA-1DA0C0579ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{497453AD-D7BF-455F-8CDA-1DA0C0579ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{497453AD-D7BF-455F-8CDA-1DA0C0579ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{497453AD-D7BF-455F-8CDA-1DA0C0579ADE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {210D1604-E76C-48F9-A82A-C2835F79093F}
+	EndGlobalSection
+EndGlobal
